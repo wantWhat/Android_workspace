@@ -1,6 +1,7 @@
 package com.example.pc.kotlindemoclass
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -35,7 +36,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        btn.setOnClickListener {
+            var intent  = Intent(this,Main2Activity::class.java )
+            startActivity(intent)
+        }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         var people: People = People("小二")
         people.test1 = "bbbb"
