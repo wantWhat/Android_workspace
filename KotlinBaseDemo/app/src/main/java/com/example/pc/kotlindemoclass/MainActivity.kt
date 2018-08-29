@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn.setOnClickListener {
-            var intent  = Intent(this,Main2Activity::class.java )
+            var intent  = Intent(this,RecyclerViewActivity::class.java )
             startActivity(intent)
         }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
