@@ -1,11 +1,13 @@
 package com.example.pc.kotlindemoclass
 
 import android.content.Intent
+import android.graphics.Rect
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.View
 import android.widget.LinearLayout
 import com.example.pc.kotlindemoclass.adapter.BookAdapter
 import kotlinx.android.synthetic.main.activity_main2.*
@@ -33,9 +35,21 @@ class RecyclerViewActivity : AppCompatActivity(), BookAdapter.ItemClickListener 
             book.price = "$10" + i
             list.add(book)
         }
+
+        recycler_view.addItemDecoration(ItemDec(20))
         var bookAdapter : BookAdapter = BookAdapter(this, list)
         bookAdapter.setItemClickListener(this)
         recycler_view.adapter = bookAdapter
 
+    }
+    class ItemDec(var itemSpace : Int) : RecyclerView.ItemDecoration() {
+        var space : Int = itemSpace;
+        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+            super.getItemOffsets(outRect, view, parent, state)
+            outRect!!.left = itemSpace;
+            outRect!!.right = itemSpace;
+            outRect.top = itemSpace;
+            outRect.bottom = itemSpace;
+        }
     }
 }
