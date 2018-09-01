@@ -1,6 +1,7 @@
 package com.example.pc.kotlindemoclass
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -9,10 +10,10 @@ import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val TAG: String = "wangchao" //常量，在顶层声明
+const val TAG: String = "demo" //常量，在顶层声明
 
 class MainActivity : AppCompatActivity() {
-    //val TAG : String = "wangchao"
+    //val TAG : String = "demo"
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -35,7 +36,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        btn.setOnClickListener {
+            var intent  = Intent(this,RecyclerViewActivity::class.java )
+            startActivity(intent)
+        }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         var people: People = People("小二")
         people.test1 = "bbbb"
