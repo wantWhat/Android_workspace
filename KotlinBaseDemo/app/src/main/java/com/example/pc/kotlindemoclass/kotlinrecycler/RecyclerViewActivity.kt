@@ -1,4 +1,4 @@
-package com.example.pc.kotlindemoclass
+package com.example.pc.kotlindemoclass.kotlinrecycler
 
 import android.content.Intent
 import android.graphics.Rect
@@ -8,13 +8,14 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
-import com.example.pc.kotlindemoclass.adapter.BookAdapter
+import com.example.pc.kotlindemoclass.Book
+import com.example.pc.kotlindemoclass.service.Main3Activity
+import com.example.pc.kotlindemoclass.R
 import kotlinx.android.synthetic.main.activity_main2.*
 
 class RecyclerViewActivity : AppCompatActivity(), BookAdapter.ItemClickListener {
     override fun onItemClick(position: Int) {
-        Log.i(TAG,"CLICK POSITION==" + position)
+        Log.i(com.example.pc.kotlindemoclass.TAG,"CLICK POSITION==" + position)
     }
 
     var mRecycler: RecyclerView? = null;
@@ -22,14 +23,14 @@ class RecyclerViewActivity : AppCompatActivity(), BookAdapter.ItemClickListener 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         btn_click.setOnClickListener {
-            Log.i(TAG, "VIEW==" + it.id)
+            Log.i(com.example.pc.kotlindemoclass.TAG, "VIEW==" + it.id)
             var intent: Intent = Intent(this, Main3Activity::class.java)
             startActivity(intent)
         }
         recycler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         var list: ArrayList<Book> = ArrayList<Book>()
         for (i in 0 until 10) {
-            Log.i(TAG, "I==$i")
+            Log.i(com.example.pc.kotlindemoclass.TAG, "I==$i")
             var book: Book = Book()
             book.name = "亮剑" + i
             book.price = "$10" + i

@@ -18,12 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerViewActivity" />
-        <activity android:name=".Main3Activity" />
-        <activity android:name=".Main4Activity" />
+        <activity android:name=".kotlinrecycler.RecyclerViewActivity" />
+        <activity android:name=".service.Main3Activity" />
+        <activity android:name=".binarytreedemo.BinraryTreeActivity" />
 
         <service
-            android:name=".MyService"
+            android:name=".service.MyService"
             android:enabled="true"
             android:exported="true" />
 

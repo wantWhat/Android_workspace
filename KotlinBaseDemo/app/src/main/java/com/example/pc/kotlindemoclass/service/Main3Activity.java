@@ -1,4 +1,4 @@
-package com.example.pc.kotlindemoclass;
+package com.example.pc.kotlindemoclass.service;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -7,13 +7,17 @@ import android.content.ServiceConnection;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.pc.kotlindemoclass.Author;
+import com.example.pc.kotlindemoclass.Book;
+import com.example.pc.kotlindemoclass.R;
+import com.example.pc.kotlindemoclass.binarytreedemo.BinraryTreeActivity;
 
 import java.util.ArrayList;
 
@@ -55,7 +59,7 @@ public class Main3Activity extends AppCompatActivity {
                 book.setPrice("$23");
                 book.setAuthor(author);
                 book.setKeyWorld(list);
-                Intent intent = new Intent(Main3Activity.this, Main4Activity.class);
+                Intent intent = new Intent(Main3Activity.this, BinraryTreeActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("data",book);
                 intent.putExtras(bundle);

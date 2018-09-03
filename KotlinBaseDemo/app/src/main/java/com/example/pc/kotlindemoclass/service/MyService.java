@@ -1,4 +1,4 @@
-package com.example.pc.kotlindemoclass;
+package com.example.pc.kotlindemoclass.service;
 
 import android.app.Service;
 import android.content.Intent;

@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import com.example.pc.kotlindemoclass.animationdemo.AnimationActivity
+import com.example.pc.kotlindemoclass.kotlinrecycler.RecyclerViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val TAG: String = "demo" //常量，在顶层声明
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn.setOnClickListener {
-            var intent  = Intent(this,RecyclerViewActivity::class.java )
+            var intent  = Intent(this, RecyclerViewActivity::class.java )
             startActivity(intent)
         }
         btn1.setOnClickListener {

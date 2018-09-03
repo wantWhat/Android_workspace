@@ -1,15 +1,18 @@
-package com.example.pc.kotlindemoclass;
+package com.example.pc.kotlindemoclass.binarytreedemo;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.pc.kotlindemoclass.Book;
+import com.example.pc.kotlindemoclass.R;
+
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
-public class Main4Activity extends AppCompatActivity {
+public class BinraryTreeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
