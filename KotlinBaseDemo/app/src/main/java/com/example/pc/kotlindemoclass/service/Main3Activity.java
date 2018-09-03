@@ -24,6 +24,8 @@ import java.util.ArrayList;
 
 public class Main3Activity extends AppCompatActivity {
     private Intent intent;
+    private Handler mInThreadHandler ;
+    Button btn;
     private ServiceConnection mSerConn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -41,7 +43,7 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        Button btn = findViewById(R.id.btn3);
+        btn = findViewById(R.id.btn3);
         intent = new Intent(Main3Activity.this, MyService.class);
         Log.i("demo","main thread==" + Thread.currentThread());
         btn.setOnClickListener(new View.OnClickListener() {
@@ -85,8 +87,23 @@ public class Main3Activity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("wangchao","send message");
+                Log.i("demo","send message");
                 mInThreadHandler.sendEmptyMessage(0x01);
+                mInThreadHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //运行在handler 所在线程
+                        Log.i("demo","thread==" + Thread.currentThread().getName());
+                        btn.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                //运行在UI线程
+                                btn.setText("btn.post hello");
+                            }
+                        });
+                    }
+                });
+
             }
         });
         new Thread().run();
@@ -130,9 +147,15 @@ public class Main3Activity extends AppCompatActivity {
         public void run() {
             super.run();
             Log.i("demo","SubThread run");
+            Main3Activity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.i("demo","runUIThread" + Thread.currentThread().getName());
+                }
+            });
         }
     }
-    private Handler mInThreadHandler ;
+
 
     //handler 在子线程创建
     class MyRunable implements Runnable {
