@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import com.example.pc.kotlindemoclass.animationdemo.AnimationActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val TAG: String = "demo" //常量，在顶层声明
@@ -38,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         btn.setOnClickListener {
             var intent  = Intent(this,RecyclerViewActivity::class.java )
+            startActivity(intent)
+        }
+        btn1.setOnClickListener {
+            var intent  = Intent(this,AnimationActivity::class.java )
             startActivity(intent)
         }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
