@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -80,6 +81,14 @@ public class Main3Activity extends AppCompatActivity {
                 bindService(intent, mSerConn, Context.BIND_AUTO_CREATE);
             }
         });
+        Button btn3 = findViewById(R.id.btn6);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("wangchao","send message");
+                mInThreadHandler.sendEmptyMessage(0x01);
+            }
+        });
         new Thread().run();
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -95,6 +104,7 @@ public class Main3Activity extends AppCompatActivity {
 
         SubThread subThread = new SubThread();
         subThread.start();
+        new Thread(new MyRunable()).start();
 
         Handler mHandler = new Handler(thread1.getLooper()){
             @Override
@@ -122,11 +132,22 @@ public class Main3Activity extends AppCompatActivity {
             Log.i("demo","SubThread run");
         }
     }
-    class MyRunable implements Runnable {
+    private Handler mInThreadHandler ;
 
+    //handler 在子线程创建
+    class MyRunable implements Runnable {
         @Override
         public void run() {
-            Log.i("demo","run");
+            Looper.prepare();
+            mInThreadHandler = new Handler(){
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    Log.i("wangchao","msg");
+                }
+            };
+            Looper.loop();
+            Log.i("demo","MyRunable run");
         }
     }
 
