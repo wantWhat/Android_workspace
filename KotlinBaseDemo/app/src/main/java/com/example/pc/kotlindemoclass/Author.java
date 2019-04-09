@@ -7,6 +7,7 @@ public class Author implements Parcelable{
     private String name;
     private String age;
     private String sex;
+	private String height;
 
     public Author() {
 

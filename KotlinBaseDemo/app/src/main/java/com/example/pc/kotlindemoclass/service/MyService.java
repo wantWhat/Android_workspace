@@ -31,6 +31,7 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG, "onStartCommand");
         sort();
+        sort1();
         int[] arr = {10,20,8,9,1,4,2,5,6,0};
         quickSort(arr, 0, arr.length - 1);
         Log.i("demo", "快速排序==" + Arrays.toString(arr));
@@ -59,7 +60,7 @@ public class MyService extends Service {
     //冒泡排序
     private void sort() {
         int[] arr = {1, 5, 2, 4, 0};
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[i] > arr[j]) {
                     int temp = arr[i];
@@ -73,10 +74,10 @@ public class MyService extends Service {
     //选择排序
     private void sort1() {
         int[] arr = {1, 5, 2, 4, 0};
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             Log.i("demo","i==" + i);
             int minIndex = i;
-            for (int j = i ; j < arr.length; j++) {
+            for (int j = i + 1 ; j < arr.length; j++) {
                 Log.i("demo","j==" + j);
                 if (arr[minIndex] > arr[j]){
                     minIndex = j;
